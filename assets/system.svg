@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 530" width="1200" height="530" role="img" aria-labelledby="t d">
+  <title id="t">How my systems run</title>
+  <desc id="d">Animated architecture diagram with two lanes. Backend lane: a client calls a Spring Boot API, which publishes to a Kafka event queue; three workers consume under a Redis distributed lock and write to PostgreSQL, with failed work retried idempotently. AI lane: a prompt enters a LangGraph agent that loops through plan, tool call and observe, then passes an eval harness before shipping.</desc>
+
+  <defs>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#30363d" opacity="0.55"/>
+    </pattern>
+    <clipPath id="card"><rect width="1200" height="530" rx="16"/></clipPath>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#484f58"/>
+    </marker>
+    <marker id="arrowRetry" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#ffa657"/>
+    </marker>
+    <marker id="arrowLoop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#d2a8ff"/>
+    </marker>
+  </defs>
+
+  <style>
+    .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
+    .muted { fill: #8b949e; }
+    .fg { fill: #e6edf3; }
+    .node { fill: #161b22; stroke: #30363d; }
+    .wire { fill: none; stroke: #484f58; stroke-width: 1.5; }
+    .retry { fill: none; stroke: #ffa657; stroke-width: 1.5; stroke-dasharray: 6 6; animation: dash 1.2s linear infinite; }
+    .loop { fill: none; stroke: #d2a8ff; stroke-width: 1.5; stroke-dasharray: 6 6; animation: dash 1.2s linear infinite; }
+    .lockbox { fill: none; stroke: #7ee787; stroke-width: 1.5; stroke-dasharray: 5 6; opacity: 0.7; }
+    .agentbox { fill: #0d1117; stroke: #d2a8ff; stroke-width: 1.5; stroke-dasharray: 5 6; opacity: 0.9; }
+    .lk { fill: #30363d; animation: hold 3s steps(1) infinite; }
+    .lk2 { animation-delay: 1s; } .lk3 { animation-delay: 2s; }
+    .gate { animation: gate 2s ease-in-out infinite; }
+    @keyframes dash { to { stroke-dashoffset: -24; } }
+    @keyframes hold { 0%, 33% { fill: #7ee787; } 34%, 100% { fill: #30363d; } }
+    @keyframes gate { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) {
+      .retry, .loop, .lk, .gate { animation: none; }
+    }
+  </style>
+
+  <g clip-path="url(#card)">
+    <rect width="1200" height="530" fill="#0d1117"/>
+    <rect width="1200" height="530" fill="url(#dots)"/>
+  </g>
+  <rect x="0.5" y="0.5" width="1199" height="529" rx="16" fill="none" stroke="#30363d"/>
+
+  <!-- ============ Lane 1: backend ============ -->
+  <text x="48" y="48" class="mono" font-size="15"><tspan fill="#58a6ff">01</tspan><tspan class="muted">  BACKEND  /  request → queue → workers → database</tspan></text>
+
+  <!-- wires -->
+  <path class="wire" d="M170 160 H240" marker-end="url(#arrow)"/>
+  <path class="wire" d="M418 160 H488" marker-end="url(#arrow)"/>
+  <path class="wire" d="M642 160 C678 160 678 112 712 112" marker-end="url(#arrow)"/>
+  <path class="wire" d="M642 160 H712" marker-end="url(#arrow)"/>
+  <path class="wire" d="M642 160 C678 160 678 208 712 208" marker-end="url(#arrow)"/>
+  <path class="wire" d="M874 112 C917 112 917 160 958 160"/>
+  <path class="wire" d="M874 160 H958" marker-end="url(#arrow)"/>
+  <path class="wire" d="M874 208 C917 208 917 160 958 160"/>
+  <path class="retry" d="M794 240 C794 290 566 290 566 195" marker-end="url(#arrowRetry)"/>
+
+  <!-- packets -->
+  <circle r="5" fill="#58a6ff">
+    <animateMotion dur="4.2s" repeatCount="indefinite" path="M170 160 H642 C678 160 678 112 714 112 H874 C917 112 917 160 960 160"/>
+  </circle>
+  <circle r="5" fill="#58a6ff">
+    <animateMotion dur="4.2s" begin="1.4s" repeatCount="indefinite" path="M170 160 H960"/>
+  </circle>
+  <circle r="5" fill="#58a6ff">
+    <animateMotion dur="4.2s" begin="2.8s" repeatCount="indefinite" path="M170 160 H642 C678 160 678 208 714 208 H874 C917 208 917 160 960 160"/>
+  </circle>
+
+  <!-- nodes -->
+  <g text-anchor="middle">
+    <rect class="node" x="48" y="128" width="122" height="64" rx="10"/>
+    <text x="109" y="156" class="mono fg" font-size="17">client</text>
+    <text x="109" y="177" class="sans muted" font-size="13.5">HTTP request</text>
+
+    <rect class="node" x="242" y="128" width="176" height="64" rx="10"/>
+    <text x="330" y="156" class="mono fg" font-size="17">Spring Boot API</text>
+    <text x="330" y="177" class="sans muted" font-size="13.5">validate · authorize</text>
+
+    <rect class="node" x="490" y="128" width="152" height="64" rx="10"/>
+    <text x="566" y="156" class="mono fg" font-size="17">Kafka</text>
+    <text x="566" y="177" class="sans muted" font-size="13.5">off the request path</text>
+
+    <rect class="lockbox" x="700" y="80" width="188" height="160" rx="12"/>
+    <text x="794" y="70" class="mono" font-size="13" fill="#7ee787">Redis lock: one message, one worker</text>
+
+    <rect class="node" x="714" y="92" width="160" height="40" rx="8"/>
+    <text x="786" y="118" class="mono fg" font-size="15">worker-1</text>
+    <circle class="lk" cx="852" cy="112" r="5"/>
+    <rect class="node" x="714" y="140" width="160" height="40" rx="8"/>
+    <text x="786" y="166" class="mono fg" font-size="15">worker-2</text>
+    <circle class="lk lk2" cx="852" cy="160" r="5"/>
+    <rect class="node" x="714" y="188" width="160" height="40" rx="8"/>
+    <text x="786" y="214" class="mono fg" font-size="15">worker-3</text>
+    <circle class="lk lk3" cx="852" cy="208" r="5"/>
+
+    <rect class="node" x="960" y="128" width="192" height="64" rx="10"/>
+    <text x="1056" y="156" class="mono fg" font-size="17">PostgreSQL</text>
+    <text x="1056" y="177" class="sans muted" font-size="13.5">row locks · constraints</text>
+
+    <text x="680" y="296" class="mono" font-size="13" fill="#ffa657">retry on failure · idempotent</text>
+  </g>
+
+  <!-- ============ Lane 2: AI ============ -->
+  <text x="48" y="336" class="mono" font-size="15"><tspan fill="#d2a8ff">02</tspan><tspan class="muted">  AI  /  prompt → agent loop → evals → ship</tspan></text>
+
+  <rect class="agentbox" x="208" y="356" width="598" height="142" rx="12"/>
+
+  <!-- wires -->
+  <path class="wire" d="M170 442 H263" marker-end="url(#arrow)"/>
+  <path class="wire" d="M395 442 H438" marker-end="url(#arrow)"/>
+  <path class="wire" d="M570 442 H613" marker-end="url(#arrow)"/>
+  <path class="wire" d="M745 442 H848" marker-end="url(#arrow)"/>
+  <path class="wire" d="M1010 442 H1058" marker-end="url(#arrow)"/>
+  <path class="loop" d="M680 418 C680 384 640 380 600 380 H410 C370 380 330 384 330 416" marker-end="url(#arrowLoop)"/>
+
+  <!-- packets -->
+  <circle r="5" fill="#d2a8ff">
+    <animateMotion dur="8s" repeatCount="indefinite" path="M170 442 H680 V418 C680 384 640 380 600 380 H410 C370 380 330 384 330 418 V442 H1106"/>
+  </circle>
+  <circle r="5" fill="#d2a8ff">
+    <animateMotion dur="8s" begin="4s" repeatCount="indefinite" path="M170 442 H680 V418 C680 384 640 380 600 380 H410 C370 380 330 384 330 418 V442 H1106"/>
+  </circle>
+
+  <!-- nodes -->
+  <g text-anchor="middle">
+    <rect class="node" x="48" y="410" width="122" height="64" rx="10"/>
+    <text x="109" y="438" class="mono fg" font-size="17">prompt</text>
+    <text x="109" y="459" class="sans muted" font-size="13.5">user goal</text>
+
+    <rect x="226" y="346" width="146" height="22" fill="#0d1117"/>
+    <text x="299" y="362" class="mono" font-size="13" fill="#d2a8ff">LangGraph agent</text>
+
+    <rect class="node" x="265" y="418" width="130" height="48" rx="24"/>
+    <text x="330" y="448" class="mono fg" font-size="16">plan</text>
+    <rect class="node" x="440" y="418" width="130" height="48" rx="24"/>
+    <text x="505" y="448" class="mono fg" font-size="16">tool call</text>
+    <rect class="node" x="615" y="418" width="130" height="48" rx="24"/>
+    <text x="680" y="448" class="mono fg" font-size="16">observe</text>
+    <text x="505" y="402" class="mono" font-size="13" fill="#d2a8ff">loop until done</text>
+
+    <rect class="node" x="850" y="410" width="160" height="64" rx="10"/>
+    <text x="922" y="438" class="mono fg" font-size="17">eval harness</text>
+    <text x="922" y="459" class="sans muted" font-size="13.5">pass or fail</text>
+    <circle class="gate" cx="996" cy="423" r="4.5" fill="#7ee787"/>
+
+    <rect x="1060" y="418" width="92" height="48" rx="24" fill="#161b22" stroke="#7ee787" stroke-width="1.5"/>
+    <text x="1096" y="448" class="mono" font-size="16" fill="#7ee787">ship</text>
+    <path d="M1122 442 l5 5 l9 -11" fill="none" stroke="#7ee787" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

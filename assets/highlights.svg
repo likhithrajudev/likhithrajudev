@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 236" width="1200" height="236" role="img" aria-labelledby="t d">
+  <title id="t">Highlights</title>
+  <desc id="d">Four achievement cards. HackerRank Orchestrate, October 2026: bronze medalist, finished in the top 135 (a rank, not a percentage). CRED Backend Hiring Challenge 2026: rank 39 of 2,590, top 2 percent. LeetCode: rating 1794, more than 400 problems solved, global rank 632 in Weekly Contest 470. CodeChef: 3 Star.</desc>
+
+  <defs>
+    <clipPath id="card"><rect width="1200" height="236" rx="16"/></clipPath>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#30363d" opacity="0.55"/>
+    </pattern>
+    <path id="star" d="M0 -13 L3.8 -4.2 L13 -4.2 L5.6 1.9 L8.2 11 L0 5.6 L-8.2 11 L-5.6 1.9 L-13 -4.2 L-3.8 -4.2 Z"/>
+  </defs>
+
+  <style>
+    .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
+    .muted { fill: #8b949e; }
+    .fg { fill: #e6edf3; }
+    .tile { fill: #161b22; stroke: #30363d; }
+    .trace { fill: none; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 14 86; animation: trace 5s linear infinite; }
+    .t2 { animation-delay: -1.25s; } .t3 { animation-delay: -2.5s; } .t4 { animation-delay: -3.75s; }
+    .bar { transform-origin: 350px 0; animation: grow 1.6s ease-out both; }
+    .tw { animation: twinkle 2.4s ease-in-out infinite; }
+    .tw2 { animation-delay: 0.4s; } .tw3 { animation-delay: 0.8s; }
+    @keyframes trace { to { stroke-dashoffset: -100; } }
+    @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    @keyframes twinkle { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+    @media (prefers-reduced-motion: reduce) {
+      .trace, .bar, .tw { animation: none; }
+    }
+  </style>
+
+  <g clip-path="url(#card)">
+    <rect width="1200" height="236" fill="#0d1117"/>
+    <rect width="1200" height="236" fill="url(#dots)"/>
+  </g>
+  <rect x="0.5" y="0.5" width="1199" height="235" rx="16" fill="none" stroke="#30363d"/>
+
+  <!-- 1: HackerRank -->
+  <rect class="tile" x="48" y="36" width="258" height="164" rx="12"/>
+  <rect class="trace" x="48" y="36" width="258" height="164" rx="12" pathLength="100" stroke="#d08a4e"/>
+  <text x="68" y="68" class="mono muted" font-size="12">HACKERRANK ORCHESTRATE</text>
+  <text x="68" y="126" class="sans" font-size="46" font-weight="700" fill="#d08a4e">Bronze</text>
+  <text x="68" y="156" class="sans fg" font-size="15">Medalist · top 135 finish</text>
+  <text x="68" y="178" class="sans muted" font-size="14">October 2026</text>
+  <g transform="translate(266 112)">
+    <path d="M-9 -30 L-3 -12 M9 -30 L3 -12" stroke="#8b949e" stroke-width="5" stroke-linecap="round"/>
+    <circle r="16" fill="#161b22" stroke="#d08a4e" stroke-width="3"/>
+    <text y="6" text-anchor="middle" class="sans" font-size="16" font-weight="700" fill="#d08a4e">3</text>
+  </g>
+
+  <!-- 2: CRED -->
+  <rect class="tile" x="330" y="36" width="258" height="164" rx="12"/>
+  <rect class="trace t2" x="330" y="36" width="258" height="164" rx="12" pathLength="100" stroke="#58a6ff"/>
+  <text x="350" y="68" class="mono muted" font-size="12">CRED BACKEND CHALLENGE 2026</text>
+  <text x="350" y="126" class="sans fg" font-size="46" font-weight="700">#39</text>
+  <text x="440" y="126" class="sans muted" font-size="18">of 2,590</text>
+  <text x="350" y="156" class="sans fg" font-size="15">Top 2% of candidates</text>
+  <rect x="350" y="170" width="218" height="6" rx="3" fill="#30363d"/>
+  <rect class="bar" x="350" y="170" width="214" height="6" rx="3" fill="#58a6ff"/>
+
+  <!-- 3: LeetCode -->
+  <rect class="tile" x="612" y="36" width="258" height="164" rx="12"/>
+  <rect class="trace t3" x="612" y="36" width="258" height="164" rx="12" pathLength="100" stroke="#ffa657"/>
+  <text x="632" y="68" class="mono muted" font-size="12">LEETCODE RATING</text>
+  <text x="632" y="126" class="sans" font-size="46" font-weight="700" fill="#ffa657">1794</text>
+  <text x="632" y="156" class="sans fg" font-size="15">400+ problems solved</text>
+  <text x="632" y="178" class="sans muted" font-size="14">Rank 632 · Weekly Contest 470</text>
+
+  <!-- 4: CodeChef -->
+  <rect class="tile" x="894" y="36" width="258" height="164" rx="12"/>
+  <rect class="trace t4" x="894" y="36" width="258" height="164" rx="12" pathLength="100" stroke="#d2a8ff"/>
+  <text x="914" y="68" class="mono muted" font-size="12">CODECHEF</text>
+  <text x="914" y="126" class="sans fg" font-size="46" font-weight="700">3 Star</text>
+  <g fill="#d2a8ff">
+    <use href="#star" class="tw" transform="translate(928 160)"/>
+    <use href="#star" class="tw tw2" transform="translate(962 160)"/>
+    <use href="#star" class="tw tw3" transform="translate(996 160)"/>
+  </g>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 372" width="600" height="372" role="img" aria-labelledby="t d">
+  <title id="t">Things I think about</title>
+  <desc id="d">Wall of engineering concepts: race conditions, row-level locks, REST APIs, distributed locking, idempotency, retries, message queues, async workers, RBAC, schema design, transactions, microservices, p95 latency, load testing, observability, LangGraph agents, evals, agent harnesses, horizontal scaling, failure handling.</desc>
+  <defs>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#30363d" opacity="0.55"/>
+    </pattern>
+    <clipPath id="card"><rect width="600" height="372" rx="16"/></clipPath>
+  </defs>
+  <style>
+    .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
+    .muted { fill: #8b949e; }
+    .fg { fill: #e6edf3; }
+    .chip { opacity: 0.7; animation: glow 7.4s ease-in-out infinite; }
+    @keyframes glow { 0%, 12%, 100% { opacity: 0.7; } 5% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { .chip { animation: none; opacity: 0.9; } }
+  </style>
+  <g clip-path="url(#card)">
+    <rect width="600" height="372" fill="#0d1117"/>
+    <rect width="600" height="372" fill="url(#dots)"/>
+  </g>
+  <rect x="0.5" y="0.5" width="599" height="371" rx="16" fill="none" stroke="#30363d"/>
+  <text x="28" y="44" class="mono muted" font-size="15">// things I think about</text>
+  <g class="chip" style="animation-delay:0.00s"><rect x="28" y="74" width="146" height="32" rx="16" fill="#161b22" stroke="#7ee787"/><text x="101.0" y="95" text-anchor="middle" class="mono fg" font-size="13.5">race conditions</text></g>
+  <g class="chip" style="animation-delay:7.03s"><rect x="183" y="74" width="146" height="32" rx="16" fill="#161b22" stroke="#7ee787"/><text x="256.0" y="95" text-anchor="middle" class="mono fg" font-size="13.5">row-level locks</text></g>
+  <g class="chip" style="animation-delay:6.66s"><rect x="338" y="74" width="98" height="32" rx="16" fill="#161b22" stroke="#58a6ff"/><text x="387.0" y="95" text-anchor="middle" class="mono fg" font-size="13.5">REST APIs</text></g>
+  <g class="chip" style="animation-delay:6.29s"><rect x="28" y="115" width="178" height="32" rx="16" fill="#161b22" stroke="#7ee787"/><text x="117.0" y="136" text-anchor="middle" class="mono fg" font-size="13.5">distributed locking</text></g>
+  <g class="chip" style="animation-delay:5.92s"><rect x="215" y="115" width="114" height="32" rx="16" fill="#161b22" stroke="#7ee787"/><text x="272.0" y="136" text-anchor="middle" class="mono fg" font-size="13.5">idempotency</text></g>
+  <g class="chip" style="animation-delay:5.55s"><rect x="338" y="115" width="82" height="32" rx="16" fill="#161b22" stroke="#7ee787"/><text x="379.0" y="136" text-anchor="middle" class="mono fg" font-size="13.5">retries</text></g>
+  <g class="chip" style="animation-delay:5.18s"><rect x="429" y="115" width="138" height="32" rx="16" fill="#161b22" stroke="#58a6ff"/><text x="498.0" y="136" text-anchor="middle" class="mono fg" font-size="13.5">message queues</text></g>
+  <g class="chip" style="animation-delay:4.81s"><rect x="28" y="156" width="130" height="32" rx="16" fill="#161b22" stroke="#58a6ff"/><text x="93.0" y="177" text-anchor="middle" class="mono fg" font-size="13.5">async workers</text></g>
+  <g class="chip" style="animation-delay:4.44s"><rect x="167" y="156" width="58" height="32" rx="16" fill="#161b22" stroke="#58a6ff"/><text x="196.0" y="177" text-anchor="middle" class="mono fg" font-size="13.5">RBAC</text></g>
+  <g class="chip" style="animation-delay:4.07s"><rect x="234" y="156" width="130" height="32" rx="16" fill="#161b22" stroke="#58a6ff"/><text x="299.0" y="177" text-anchor="middle" class="mono fg" font-size="13.5">schema design</text></g>
+  <g class="chip" style="animation-delay:3.70s"><rect x="373" y="156" width="122" height="32" rx="16" fill="#161b22" stroke="#7ee787"/><text x="434.0" y="177" text-anchor="middle" class="mono fg" font-size="13.5">transactions</text></g>
+  <g class="chip" style="animation-delay:3.33s"><rect x="28" y="197" width="130" height="32" rx="16" fill="#161b22" stroke="#58a6ff"/><text x="93.0" y="218" text-anchor="middle" class="mono fg" font-size="13.5">microservices</text></g>
+  <g class="chip" style="animation-delay:2.96s"><rect x="167" y="197" width="114" height="32" rx="16" fill="#161b22" stroke="#ffa657"/><text x="224.0" y="218" text-anchor="middle" class="mono fg" font-size="13.5">p95 latency</text></g>
+  <g class="chip" style="animation-delay:2.59s"><rect x="290" y="197" width="122" height="32" rx="16" fill="#161b22" stroke="#ffa657"/><text x="351.0" y="218" text-anchor="middle" class="mono fg" font-size="13.5">load testing</text></g>
+  <g class="chip" style="animation-delay:2.22s"><rect x="421" y="197" width="130" height="32" rx="16" fill="#161b22" stroke="#ffa657"/><text x="486.0" y="218" text-anchor="middle" class="mono fg" font-size="13.5">observability</text></g>
+  <g class="chip" style="animation-delay:1.85s"><rect x="28" y="238" width="154" height="32" rx="16" fill="#161b22" stroke="#d2a8ff"/><text x="105.0" y="259" text-anchor="middle" class="mono fg" font-size="13.5">LangGraph agents</text></g>
+  <g class="chip" style="animation-delay:1.48s"><rect x="191" y="238" width="66" height="32" rx="16" fill="#161b22" stroke="#d2a8ff"/><text x="224.0" y="259" text-anchor="middle" class="mono fg" font-size="13.5">evals</text></g>
+  <g class="chip" style="animation-delay:1.11s"><rect x="266" y="238" width="146" height="32" rx="16" fill="#161b22" stroke="#d2a8ff"/><text x="339.0" y="259" text-anchor="middle" class="mono fg" font-size="13.5">agent harnesses</text></g>
+  <g class="chip" style="animation-delay:0.74s"><rect x="28" y="279" width="170" height="32" rx="16" fill="#161b22" stroke="#58a6ff"/><text x="113.0" y="300" text-anchor="middle" class="mono fg" font-size="13.5">horizontal scaling</text></g>
+  <g class="chip" style="animation-delay:0.37s"><rect x="207" y="279" width="154" height="32" rx="16" fill="#161b22" stroke="#7ee787"/><text x="284.0" y="300" text-anchor="middle" class="mono fg" font-size="13.5">failure handling</text></g>
+  <circle cx="33" cy="342" r="4.5" fill="#58a6ff"/><text x="44" y="346" class="mono muted" font-size="12.5">backend</text><circle cx="124.19999999999999" cy="342" r="4.5" fill="#7ee787"/><text x="135.2" y="346" class="mono muted" font-size="12.5">correctness</text><circle cx="245.79999999999998" cy="342" r="4.5" fill="#ffa657"/><text x="256.79999999999995" y="346" class="mono muted" font-size="12.5">measurement</text><circle cx="367.4" cy="342" r="4.5" fill="#d2a8ff"/><text x="378.4" y="346" class="mono muted" font-size="12.5">AI</text>
+</svg>
